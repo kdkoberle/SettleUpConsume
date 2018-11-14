@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 
 @Generated("com.robohorse.robopojogenerator")
-public class JSONResult{
+public class JSONResult {
 
 	@JsonProperty("rent_1")
 	private int rent1;
