@@ -26,4 +26,15 @@ class SettleUpClientTest {
         assertEquals(633, results.get(0).getRent1());
     }
 
+    @Test
+    public void testXML() throws Exception {
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target("http://18.216.201.147:8080/settleup/services/settleUpService/xml/800/Sports/2");
+
+        String respone = target.request(MediaType.APPLICATION_XML).get(String.class);
+
+
+        assertEquals("???", respone);
+
+    }
 }
