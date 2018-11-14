@@ -11,9 +11,10 @@ import javax.ws.rs.core.MediaType;
 
 public class SettleUpClient {
 
-    public List<JSONResult> getJSONRestuls() throws Exception {
+    public List<JSONResult> getJSONRestuls(int rent, String activity, int numberBedrooms) throws Exception {
         Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("http://18.216.201.147:8080/settleup/services/settleUpService/json/800/Sports/2");
+        String targetUrl = "http://18.216.201.147:8080/settleup/services/settleUpService/json/" + rent + "/" + activity + "/" + numberBedrooms;
+        WebTarget target = client.target(targetUrl);
 
         String respone = target.request(MediaType.APPLICATION_JSON).get(String.class);
 
@@ -22,6 +23,6 @@ public class SettleUpClient {
         });
 
         return results;
-
     }
+
 }
