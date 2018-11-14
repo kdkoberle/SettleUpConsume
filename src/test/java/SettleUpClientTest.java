@@ -1,5 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.settleup.client.JSONResult;
 import org.junit.jupiter.api.Test;
@@ -20,8 +21,9 @@ class SettleUpClientTest {
         String respone = target.request(MediaType.APPLICATION_JSON).get(String.class);
 
         ObjectMapper mapper = new ObjectMapper();
-        List<JSONResult> result = mapper.readValues(respone, JSONResult.class);
+        List<JSONResult> results = mapper.readValue(respone, new TypeReference<List<JSONResult>>(){});
 
-        assertEquals("???", result);
+        assertEquals(633, results.get(0).getRent1());
     }
+
 }
